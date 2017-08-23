@@ -93,7 +93,6 @@ export default class Activities extends Component {
         this.setState({list: newarray, step: step, searchText: text})
 
 
-
     }
 
     componentWillUpdate(nextProps, nextState) {
@@ -148,6 +147,8 @@ export default class Activities extends Component {
         //
         // this.refs.mmm.bounceIn(700);
         // this.SearchMethod('Arianna ','1')
+
+
         var newArray = this.state.list.slice();
         // newArray.push({sdf: 'dsfsfd'});
         newArray[0].member.name = "mohsen sssssssssss"
@@ -167,10 +168,10 @@ export default class Activities extends Component {
 
     render() {
 
-
+        const test='sdfsdf'
         return (
             <View style={styles.container}>
-                <Text>MainPage</Text>
+                <Text>MainPage {test} </Text>
                 <Button title={"btsnabhss  sssssssjcxhbaabcsssbdd"} onPress={this.btnadd}></Button>
                 <Animatable.View ref="view">
                     <Text>sssdsccssssss</Text>
