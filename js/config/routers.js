@@ -11,6 +11,7 @@ import ViewPagerPage from'../test/viewpager/test'
 import MainScreen from'../test/react-native-viewpager/MainScreen'
 import ExampleView from'../test/react-native-animatable/app'
 import Activity from '../screen/member/Activity'
+import Chatroom from '../screen/chatroom/chatroom'
 import  activityItem from '../screen/activityItem'
 import Detail from '../screen/member/Detail'
 export const ActivityTabs = TabNavigator({
@@ -45,6 +46,9 @@ export const ActivityRouter = StackNavigator({
 })
 
 export const DrawerMenu = DrawerNavigator({
+    chatroom: {
+        screen: Chatroom,
+    },
     Activities: {
         screen: ActivityRouter,
     }, animatable: {
@@ -52,9 +56,11 @@ export const DrawerMenu = DrawerNavigator({
     },
     SwipeoutExample: {
         screen: SwipeoutExample,
-    }, ViewPagerPage: {
+    },
+    ViewPagerPage: {
         screen: ViewPagerPage,
-    }, viewpager: {
+    },
+    viewpager: {
         screen: MainScreen,
     },
 });

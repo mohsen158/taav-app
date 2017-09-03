@@ -10,10 +10,24 @@ import {
     View
 } from 'react-native';
 import  {MainRoute} from './config/routers'
-export default class taav extends Component {
-    render() {
-        return <MainRoute/>
+import {createStore, applyMiddleware} from 'redux';
+import {Provider, connect} from 'react-redux';
+import Chatroom from './screen/chatroom/chatroom'
+import rootReducer from './reducers/rootReducer'
+import logger from 'redux-logger'
+const store = createStore(rootReducer, applyMiddleware(logger));
+import io from 'socket.io-client';
 
+export default class taav extends Component {
+
+
+    render() {
+        console.log('store from hear',store)
+        return (
+            <Provider store={store}>
+                <MainRoute dispatch={store.dispatch}/>
+            </Provider>
+        );
     }
 }
 

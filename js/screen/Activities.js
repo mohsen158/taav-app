@@ -28,6 +28,7 @@ const styles = StyleSheet.create({
 
 })
 import Echo from "laravel-echo"
+import firebase from '../firebase';
 
 
 window.io = require("socket.io-client");
@@ -142,6 +143,23 @@ export default class Activities extends Component {
 
 
     btnadd() {
+
+
+        firebase.auth()
+            .signInAnonymously()
+            .then(() => {
+
+            });
+
+
+        const newMsgRef = firebase.database()
+            .ref('messages')
+            .push();
+
+     id = newMsgRef.key;
+        newMsgRef.set(id);
+
+
         // var list= this.state.testlist.concat({sdf:'sdxxfsdfs'})
         //  this.setstate( {testlist:list})
         //
@@ -149,11 +167,11 @@ export default class Activities extends Component {
         // this.SearchMethod('Arianna ','1')
 
 
-        var newArray = this.state.list.slice();
-        // newArray.push({sdf: 'dsfsfd'});
-        newArray[0].member.name = "mohsen sssssssssss"
-        // newArray.pop()
-        this.setState({list: newArray})
+        // var newArray = this.state.list.slice();
+        // // newArray.push({sdf: 'dsfsfd'});
+        // newArray[0].member.name = "mohsen sssssssssss"
+        // // newArray.pop()
+        // this.setState({list: newArray})
     }
 
     testbtn(item) {
