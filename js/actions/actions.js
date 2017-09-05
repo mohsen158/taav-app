@@ -4,14 +4,14 @@
 import DeviceInfo from 'react-native-device-info';
 import {Platform} from 'react-native';
 let testtest = 0;
-
+import {praxoServer} from '../config/env'
 import io from 'socket.io-client';
 let userID = Date.now();
 var socket;
-
+var path='/storage/emulated/0/Pictures/Telegram/IMG_20170901_231340.jpg'
 export const initMessage = (dispatch, user) => {
 
-    socket = io('http://192.168.1.52:8890', {transports: ['websocket'], query: "username=" + user.name});
+    socket = io(praxoServer, {transports: ['websocket'], query: "username=" + user.name});
     console.log('socket ssssds', socket)
 
 
@@ -19,23 +19,27 @@ export const initMessage = (dispatch, user) => {
 
     console.log('listen  ss ')
 
-    socket.on('receiveMesages',(data)=>{
+    socket.on('receiveMessages', (data) => {
 
-      data=JSON.parse('['+data+']')
-        Object.values(data).forEach(msg => dispatch(addMessage(msg)));
+        if (data) {
+            data = JSON.parse('[' + data + ']')
+            Object.values(data).forEach(msg => dispatch(addMessage(msg)));
+        }
     })
 
 
-    socket.emit('fetchallMessages','{"room":1}')
+    socket.emit('fetchallMessages', '{"room":1}')
     socket.on('receiveMessage', (message) => {
 
-        console.log(message)
 
         setTimeout(() => {
 
             const messages = message || [];
-            message.id = "test value";
+
             dispatch(addMessage(messages))
+            console.log(message)
+            console.warn("new message")
+
         }, 0);
 
 
@@ -63,15 +67,13 @@ export const changeUserName = (name) => ({
     type: 'SET_USER_NAME',
     name: name
 })
-export const sendMessage = (text, user) => {
-    testtest = testtest + 1;
-    console.log('testtest', testtest)
-
+export const sendMessage = (text='', user,fileName='') => {
 
     var msg = {
-        id: 123,
+        id: Date.now(),
         text: text,
         time: Date.now(),
+        fileName:fileName,
         author: {
             name: user.name,
             avatar: user.avatar,

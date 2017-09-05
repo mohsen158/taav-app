@@ -14,9 +14,7 @@ export default class MessageList extends Component {
     }
 
     btn() {
-
-
-        dispatch({type: 'test1'})////////////this is wrong???
+        dispatch({type: 'tests '})////////////this is wrong???
     }
 
     render() {

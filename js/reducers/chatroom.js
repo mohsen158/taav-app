@@ -54,6 +54,7 @@ export const message = (state, action) => {
                 id: action.id,
                 text: action.text,
                 time: action.time,
+                fileName:action.fileName,
                 author: action.author
             }
         default:
@@ -65,6 +66,7 @@ const init = [
         id: 1,
         text: 'text 1',
         time: Date.now(),
+        fileName:'',
         author: {
             name: 'mohsen',
             avatar: 'https://abs.twimg.com/sticky/default_profile_images/default_profile_3_400x400.png',
@@ -73,31 +75,7 @@ const init = [
         },
         room: ''
     }
-    ,
-    {
-        id: 2,
-        text: 'text 2',
-        time: Date.now(),
-        author: {
-            name: 'mohsen',
-            avatar: 'https://abs.twimg.com/sticky/default_profile_images/default_profile_3_400x400.png',
-            authorizing: false,
-            authorized: false
-        },
-        room: ''
-    },
-    {
-        id: 3,
-        text: 'text 3',
-        time: Date.now(),
-        author: {
-            name: 'mohsen',
-            avatar: 'https://abs.twimg.com/sticky/default_profile_images/default_profile_3_400x400.png',
-            authorizing: false,
-            authorized: false
-        },
-        room: ''
-    }
+
 ]
 export const messages = (state = init, action) => {
 

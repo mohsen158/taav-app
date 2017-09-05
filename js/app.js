@@ -22,6 +22,7 @@ export default class taav extends Component {
 
 
     render() {
+        console.ignoredYellowBox = ['Setting a timer'];
         console.log('store from hear',store)
         return (
             <Provider store={store}>

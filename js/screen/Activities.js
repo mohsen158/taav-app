@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
 
 })
 import Echo from "laravel-echo"
-import firebase from '../firebase';
+
 
 
 window.io = require("socket.io-client");
