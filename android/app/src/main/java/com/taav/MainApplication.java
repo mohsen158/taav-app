@@ -8,10 +8,11 @@ import com.facebook.react.ReactPackage;
 import com.filepicker.FilePickerPackage;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
-
+import com.wix.interactable.Interactable;
 import java.util.Arrays;
 import java.util.List;
 
+import com.airbnb.android.react.lottie.LottiePackage;
 public class MainApplication extends Application implements ReactApplication {
 
   private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
@@ -25,6 +26,8 @@ public class MainApplication extends Application implements ReactApplication {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
           new ImagePickerPackage(),
+            new Interactable(),
+            new LottiePackage(),
           new FilePickerPackage()
       );
     }

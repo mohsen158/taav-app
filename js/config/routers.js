@@ -14,6 +14,8 @@ import Activity from '../screen/member/Activity'
 import Chatroom from '../screen/chatroom/chatroom'
 import  activityItem from '../screen/activityItem'
 import Detail from '../screen/member/Detail'
+import lottie from '../test/lottie/LottieAnimatedExample'
+import  interactable from '../test/react-native-interactable/app'
 export const ActivityTabs = TabNavigator({
 
     Detail: {
@@ -62,6 +64,11 @@ export const DrawerMenu = DrawerNavigator({
     },
     viewpager: {
         screen: MainScreen,
+    }, interactable: {
+        screen: interactable,
+    },Lottie: {
+
+        screen: lottie
     },
 });
 export const MainRoute = StackNavigator({
